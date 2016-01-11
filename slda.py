@@ -109,7 +109,7 @@ class sLDA:
                 qZ = self.qZ[d,:,:]
                 qPhi += (qZ[:,:] * doc[:,1].reshape((doc.shape[0],1))).T
             phiExpLog = scipy.special.psi(self.qPhi[:,:]+1.0)
-            phiExpLog -= np.tile(scipy.special.psi(self.qPhi[:,:].sum(axis=1)).reshape((self.nTopics,1)),(1,self.nVocabulary))
+            phiExpLog -= np.tile(scipy.special.psi((self.qPhi[:,:]+1.0).sum(axis=1)).reshape((self.nTopics,1)),(1,self.nVocabulary))
 
             # Update eta
             eta = self.eta[:]
@@ -132,7 +132,7 @@ class sLDA:
                 else:
                     qTheta[:] = qThetaNew
                 thetaExpLog = scipy.special.psi(qTheta+1.0)
-                thetaExpLog -= scipy.special.psi(qTheta.sum())
+                thetaExpLog -= scipy.special.psi((qTheta+1.0).sum())
 
                 # Update zeta
                 self.zeta[d] = self.sumMulti(doc,qZ,eta,nd) + np.dot(qZ.sum(axis=1),doc[:,1])
@@ -154,7 +154,7 @@ class sLDA:
                 break
 
             toc = time.clock()
-            print (nIteration,deltaMax,tic-toc)
+            print (nIteration,deltaMax,toc-tic)
             print eta
             nIteration += 1         
         return
@@ -164,7 +164,7 @@ class sLDA:
 
          # Utilize topic information with training data
         phiExpLog = scipy.special.psi(self.qPhi[:,:]+1.0)
-        phiExpLog -= np.tile(scipy.special.psi(self.qPhi[:,:].sum(axis=1)).reshape((self.nTopics,1)),(1,self.nVocabulary))
+        phiExpLog -= np.tile(scipy.special.psi((self.qPhi[:,:]+1.0).sum(axis=1)).reshape((self.nTopics,1)),(1,self.nVocabulary))
         
         # Define and Initialize parameters
         nDataPredict = dataPredict.shape[0]
@@ -198,7 +198,7 @@ class sLDA:
                 else:
                     qTheta[:] = qThetaNew
                 thetaExpLog = scipy.special.psi(qTheta+1.0)
-                thetaExpLog -= scipy.special.psi(qTheta.sum())
+                thetaExpLog -= scipy.special.psi((qTheta+1.0).sum())
 
                 # Update zeta
                 qZetaPredict[d] = self.sumMulti(doc,qZ,self.eta,nd) + np.dot(qZ.sum(axis=1),doc[:,1])
@@ -218,7 +218,7 @@ class sLDA:
                 break
 
             toc = time.clock()
-            print (nIteration,deltaMax,tic-toc)
+            print (nIteration,deltaMax,toc-tic)
             nIteration += 1
 
         # Logistic Regression
