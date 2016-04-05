@@ -17,6 +17,8 @@ Figures below show the obtained results after observing 1000 synthetically gener
 ![sample](https://raw.github.com/kyoheiotsuka/supervisedLDA/master/result/6.bmp)
 ![sample](https://raw.github.com/kyoheiotsuka/supervisedLDA/master/result/7.bmp)
 
+![sample](https://raw.github.com/kyoheiotsuka/supervisedLDA/master/result/topicWord.jpg)
+
 LDA class provided supports not only extracting topics from training data but also inferring document-topic distribution and label of unseen data. 
 
 ## Licence
