@@ -1,7 +1,7 @@
 # supervised Latent Dirichlet Allocation (sLDA)
 
 Implementation of supervised Latent Dirichlet Allocation (sLDA) using variational Bayesian inference is provided in this class. Classification task together with topic distribution inference can be conducted simultaneously.
-For furthur information on sLDA, please refer to the original paper [Blei et al. (2007)](https://www.cs.princeton.edu/~blei/papers/BleiMcAuliffe2007.pdf) .
+For furthur information on sLDA, please refer to the original paper [supervised topic model](https://www.cs.princeton.edu/~blei/papers/BleiMcAuliffe2007.pdf) .
 
 ## Sample Code
 
