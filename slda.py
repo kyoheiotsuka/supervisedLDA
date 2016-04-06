@@ -64,7 +64,7 @@ class sLDA:
             lEtaGradient += buff/nd
         return -lEtaGradient
 
-    def solve(self,nTopics=8,epsilon=1e-5,alpha=1.0,beta=0.01):
+    def solve(self,nTopics=8,epsilon=1e-4,alpha=1.0,beta=0.01):
 
         # set additional parameters
         self.nTopics = nTopics
